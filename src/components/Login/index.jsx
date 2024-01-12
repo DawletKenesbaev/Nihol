@@ -1,24 +1,23 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { Wrapper } from './style'
+import { notification } from 'antd';
 
 function Login() {
-  const [userData,setUserData] = useState({
-    phoneNumber:'',
-    password: ''
-  });
-    
+  const PhoneRef = useRef();
+  const PasswordRef = useRef();
 
-  const OnAuth = () => {
+
+  const KeyDetect = (e)=> {
+    if (e.key === 'Enter') {
+      return OnAuth()
+    }    
   }
-  const OnChange =(e)=>{
-    //userData[e.target.name] = e.target.value 
-    //web page dont rerender that is why we use state to render our page
-     setUserData({
-        ...userData,
-        [e.target.name]:e.target.value,
-     })
-     console.log(userData);
-
+  const OnAuth = () => {
+    const phone = PhoneRef.current.input.value;
+    const password = PasswordRef.current.input.value
+    if (!password || !phone) {
+       return notification.error({message:"Please fill all fields"})
+    }
   }
   return (
     <Wrapper>
@@ -30,15 +29,18 @@ function Login() {
              Biz har kuni kechagidan ko'ra yaxshiroq xizmat ko'rsatishga intilamiz.
            </Wrapper.Description>
            <Wrapper.Input 
-            onChange={OnChange}
+            ref={PhoneRef}
             name='phoneNumber'
             bordered={false}
             placeholder='(99) 999 99 99' 
-            addonBefore="+998" /> 
-           <Wrapper.InputPassword 
-            onChange={OnChange}
+            addonBefore="+998"
+            /> 
+            <Wrapper.InputPassword 
+            ref={PasswordRef}
             name='password'
-           placeholder="parol"/>
+            placeholder="parol"
+            onKeyDown={KeyDetect}
+            />
             <Wrapper.Button onClick={OnAuth}>Login</Wrapper.Button>
         </Wrapper.Container>
     </Wrapper>

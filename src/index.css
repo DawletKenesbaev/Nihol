@@ -4,3 +4,6 @@
     box-sizing: border-box;
     font-family: Roboto,sans-serif;
 }
+body {
+    background-color: rgb(68, 68, 68);
+}
