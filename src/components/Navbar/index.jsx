@@ -2,10 +2,15 @@ import React from 'react'
 import { Wrapper } from './style'
 import { Dropdown } from 'antd';
 
+
+import {useDropDownAPI} from '../../generic/DropDown';
+
+
 const items = [
  
 ];
 function Navbar() {
+  const {navbarDropDownItems} = useDropDownAPI()
   return (
     <Wrapper>
         <Wrapper.Title>
@@ -14,9 +19,9 @@ function Navbar() {
       
         <Dropdown
           menu={{
-            items,
+            items:  navbarDropDownItems,
           }}
-          trigger={['click','hover']}
+          trigger={['click']}
          >
             <Wrapper.Avatar>
              D

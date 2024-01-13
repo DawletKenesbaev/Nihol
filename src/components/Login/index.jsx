@@ -1,11 +1,12 @@
 import React, { useRef, useState } from 'react'
 import { Wrapper } from './style'
 import { notification } from 'antd';
+import { LoadingOutlined } from '@ant-design/icons'
 
 function Login() {
   const PhoneRef = useRef();
   const PasswordRef = useRef();
-
+  const [loading,SetLoading] = useState(false)
 
   const KeyDetect = (e)=> {
     if (e.key === 'Enter') {
@@ -13,9 +14,11 @@ function Login() {
     }    
   }
   const OnAuth = () => {
-    const phone = PhoneRef.current.input.value;
-    const password = PasswordRef.current.input.value
-    if (!password || !phone) {
+    const UserValue = {
+      phone : `+998${PhoneRef.current.input.value}` ,
+      password : PasswordRef.current.input.value
+    }
+    if (!PasswordRef || !PhoneRef) {
        return notification.error({message:"Please fill all fields"})
     }
   }
@@ -41,7 +44,11 @@ function Login() {
             placeholder="parol"
             onKeyDown={KeyDetect}
             />
-            <Wrapper.Button onClick={OnAuth}>Login</Wrapper.Button>
+            <Wrapper.Button onClick={OnAuth}>
+              {
+                loading ? <LoadingOutlined /> : 'Login'
+              }
+            </Wrapper.Button>
         </Wrapper.Container>
     </Wrapper>
   )
