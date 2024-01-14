@@ -21,8 +21,8 @@ Wrapper.Title = styled.div`
 Wrapper.Avatar = styled.div`
     background: rgb(245, 106, 0);
     cursor: pointer;
-    width: 26px;
-    height: 26px;
+    width: 31px;
+    height: 31px;
     line-height: 24px;
     font-size: 18px;
     border-radius: 50%;

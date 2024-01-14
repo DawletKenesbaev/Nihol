@@ -18,20 +18,28 @@ Wrapper.Container = styled.div`
 
 `
 Wrapper.Title = styled.div`
+    display: flex;
+    align-items: center;
     font-family: Inter;
     font-style: normal;
     font-weight: 500;
-    font-size: 34px;
+    font-size: 41px;
     line-height: 77px;
-    color: rgb(191, 191, 191);
+    color: rgb(0, 0, 0);
     margin: 40px;
+`
+Wrapper.Box = styled.div`
+    margin: 30px auto;
+    width: fit-content;
+    display: flex;
+    gap: 150px;
 `
 Wrapper.Card = styled.div`
     width: 250px;
     height: 250px;
     cursor: pointer;
     border-radius: 17px;
-    background: rgb(31, 31, 31);
+    background: rgb(255, 255, 255);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
