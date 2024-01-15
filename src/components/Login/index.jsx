@@ -7,7 +7,8 @@ import { LoadingOutlined } from '@ant-design/icons'
 
 
 
-import axios from 'axios';
+import useNotificationAPI from '../../generic/NotificationAPI';
+import useAxios from '../../hooks/useAxios';
 
 
 function Login() {
@@ -15,61 +16,43 @@ function Login() {
   const PasswordRef = useRef();
   const [loading,SetLoading] = useState(false)
 
+
+  const Notifier = useNotificationAPI()
+  const axios = useAxios()
+
+
+
   const KeyDetect = (e)=> {
-    if (e.key === 'Enter') {
-      return OnAuth()
-    }    
+    if (loading) return;
+    if (e.key === 'Enter' || e.key === 'Enter') return OnAuth() 
   }
-  // const OnAuth = () => {
-  //   const UserValue = {
-  //     phoneNumber : `+998934710906` ,
-  //     password : PasswordRef.current.input.value
-  //   }
-  //   if (!PasswordRef || !PhoneRef) {
-  //      return notification.error({message:"Please fill all fields"})
-  //   }
-  //   console.log(process.env.REACT_APP_MAIN_URL);
-  //   axios({
-  //     url: `${process.env.REACT_APP_MAIN_URL}/user/sign-in`,
-  //     method:"POST",
-  //     data:{
-  //       ...UserValue
-  //     }
-  //   });
-  // }
   const OnAuth = async () => {
-    const UserValue = {
-      phoneNumber: `+998934710906`,
+    const {password,phoneNumber} = {
+      phoneNumber: PhoneRef.current.input.value,
       password: PasswordRef.current.input.value,
     };
-  
+    if (!password || !phoneNumber)  return Notifier('empty') 
+    SetLoading(true)
     try {
       const response = await axios.post(
         `${process.env.REACT_APP_MAIN_URL}/user/sign-in`,
-        UserValue
+        {
+          phoneNumber:`+998${phoneNumber}`,
+          password
+        } 
       );
-      // Handle successful response
-      console.log(response.data);
+      console.log(response.data.data.user);
+      localStorage.setItem('token',response.data.data.token)
+      SetLoading(false)
+      return notification.success({message : 'Successfully Logged In '})
     } catch (error) {
-      // Handle errors
       console.error("AxiosError:", error);
-      if (error.response) {
-        // The request was made, but the server responded with an error
-        console.error("Response data:", error.response.data);
-        console.error("Response status:", error.response.status);
-        console.error("Response headers:", error.response.headers);
-      } else if (error.request) {
-        // The request was made, but no response was received
-        console.error("No response received");
-        console.error("Request data:", error.request);
-      } else {
-        // Something happened in setting up the request that triggered an Error
-        console.error("Error:", error.message);
-      }
+      SetLoading(false)
+      Notifier(error.response.status)
     }
   };
-  
-  
+ 
+
   return (
     <Wrapper>
         <Wrapper.Container>
@@ -101,5 +84,4 @@ function Login() {
     </Wrapper>
   )
 }
-
 export default Login
