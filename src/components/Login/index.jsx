@@ -10,17 +10,19 @@ import { LoadingOutlined } from '@ant-design/icons'
 import useNotificationAPI from '../../generic/NotificationAPI';
 import useAxios from '../../hooks/useAxios';
 
+import useSignIn from 'react-auth-kit/hooks/useSignIn';
+
 
 function Login() {
   const PhoneRef = useRef();
   const PasswordRef = useRef();
   const [loading,SetLoading] = useState(false)
-
+  
 
   const Notifier = useNotificationAPI()
   const axios = useAxios()
 
-
+  const sigIn = useSignIn()
 
   const KeyDetect = (e)=> {
     if (loading) return;
@@ -33,26 +35,37 @@ function Login() {
     };
     if (!password || !phoneNumber)  return Notifier('empty') 
     SetLoading(true)
-    try {
-      const response = await axios.post(
-        `${process.env.REACT_APP_MAIN_URL}/user/sign-in`,
-        {
-          phoneNumber:`+998${phoneNumber}`,
-          password
-        } 
-      );
-      console.log(response.data.data.user);
-      localStorage.setItem('token',response.data.data.token)
-      SetLoading(false)
-      return notification.success({message : 'Successfully Logged In '})
-    } catch (error) {
-      console.error("AxiosError:", error);
-      SetLoading(false)
-      Notifier(error.response.status)
-    }
-  };
- 
+    axios({
+      method:'POST',
+      url: `/user/sign-in`,
+      body: {
+        phoneNumber:`+998${phoneNumber}`,
+        password
+      }
+    }).then(
+      ({
+        data:{
+          data:{
+            token,
+            user
+          }
+        }
+       })=>{
+        localStorage.setItem('token',token)
+        console.log(user);
+        sigIn({
 
+        })
+        SetLoading(false)
+        return notification.success({message : 'Successfully Logged In '})
+       }
+      ).catch((error)=>{
+        console.error("AxiosError:", error);
+        SetLoading(false)
+        console.log(error.response.status);
+        Notifier(error.response.status)
+      })
+    }
   return (
     <Wrapper>
         <Wrapper.Container>

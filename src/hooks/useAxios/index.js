@@ -5,7 +5,7 @@ import axios from "axios"
 const useAxios = () => {
   return async ({url,method ='GET', body,headers}) => {
      return await axios({
-        url:`${process.env.REACT_APP_MAIN_URL}`,
+        url:`${process.env.REACT_APP_MAIN_URL}${url}`,
         method,
         data: {
             ...body

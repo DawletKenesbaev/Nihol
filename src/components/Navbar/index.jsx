@@ -1,4 +1,6 @@
 import React from 'react'
+import { Outlet } from 'react-router-dom';
+
 import { Wrapper } from './style'
 import { Dropdown } from 'antd';
 
@@ -12,22 +14,25 @@ const items = [
 function Navbar() {
   const {navbarDropDownItems} = useDropDownAPI()
   return (
-    <Wrapper>
-        <Wrapper.Title>
-          Nihol
-        </Wrapper.Title>
-      
-        <Dropdown
-          menu={{
-            items:  navbarDropDownItems,
-          }}
-          trigger={['click']}
-         >
-            <Wrapper.Avatar>
-             D
-            </Wrapper.Avatar>
-         </Dropdown>
-    </Wrapper>
+    <>
+         <Wrapper>
+            <Wrapper.Title>
+              Nihol
+            </Wrapper.Title>
+          
+            <Dropdown
+              menu={{
+                items:  navbarDropDownItems,
+              }}
+              trigger={['click']}
+             >
+                <Wrapper.Avatar>
+                D
+                </Wrapper.Avatar>
+            </Dropdown>
+        </Wrapper>
+        <Outlet />
+    </>
   )
 }
 

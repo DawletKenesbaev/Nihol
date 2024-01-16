@@ -6,6 +6,8 @@ const Notifier = (status)=>{
             return notification.error({message: "Password is incorrect"})
         case 409:
             return notification.error({message: "User not found"})
+        case 404:
+            return notification.error({message: "Bad Request"})
         case 'empty':
             return notification.error({message: "Please fill all fields"})
         default:
