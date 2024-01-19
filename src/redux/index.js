@@ -1,7 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
+import modalSlice  from "./modelSlice";
+import localeSlice from "./localeSlice";
 
 export default configureStore({
-   modal: modalReducer,
-
+  reducer: {
+    modal:modalSlice,
+    locale: localeSlice
+  },
 }
 )

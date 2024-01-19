@@ -6,15 +6,26 @@ import { Dropdown } from 'antd';
 
 
 import {useDropDownAPI} from '../../generic/DropDown';
+import SettingModal from './SettingModal';
+import LanguageModal from './LanguageModal';
+import { useDispatch } from 'react-redux';
+import { switchLocaleModal, switchProfileModal } from '../../redux/modelSlice';
 
 
 const items = [
  
 ];
+
 function Navbar() {
   const {navbarDropDownItems} = useDropDownAPI()
+  const dispatch = useDispatch()
+  const settingClickHandler = () =>{dispatch(switchProfileModal())}
+  const localeClickHandler = () =>{dispatch(switchLocaleModal())}
+
   return (
     <>
+         <SettingModal />
+         <LanguageModal />
          <Wrapper>
             <Wrapper.Title>
               Nihol
@@ -22,7 +33,7 @@ function Navbar() {
           
             <Dropdown
               menu={{
-                items:  navbarDropDownItems,
+                items:  navbarDropDownItems({settingClickHandler,localeClickHandler }),
               }}
               trigger={['click']}
              >
