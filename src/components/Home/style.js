@@ -30,7 +30,7 @@ Wrapper.Title = styled.div`
 `
 Wrapper.Box = styled.div`
     margin: 30px auto;
-    width: fit-content;
+    width: 100%;
     display: flex;
     gap: 150px;
 `

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Outlet } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 
 import { Wrapper } from './style'
 import { Dropdown } from 'antd';
@@ -21,13 +21,13 @@ function Navbar() {
   const dispatch = useDispatch()
   const settingClickHandler = () =>{dispatch(switchProfileModal())}
   const localeClickHandler = () =>{dispatch(switchLocaleModal())}
-
+  const navigate = useNavigate()
   return (
     <>
          <SettingModal />
          <LanguageModal />
          <Wrapper>
-            <Wrapper.Title>
+            <Wrapper.Title onClick={()=> navigate('/') } style={{cursor: 'pointer'}}>
               Nihol
             </Wrapper.Title>
           

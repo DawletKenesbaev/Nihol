@@ -5,59 +5,36 @@ import halftime from '../../assets/images/half_time.svg'
 import timeup from '../../assets/images/start_time.svg'
 import emptyplaces from '../../assets/images/empty_place.svg'
 import reports from '../../assets/images/report.svg'
-
+import {
+    UsergroupDeleteOutlined,
+    FieldTimeOutlined,
+    HourglassOutlined,
+    InsertRowRightOutlined
+  
+  } from '@ant-design/icons';
 import {Wrapper} from './style'
 
-import { CardData } from '../../mock/CardData'
 import Card from '../../generic/Card'
+import { CardData } from '../../mock/carddata'
 import { useNavigate } from 'react-router-dom'
+import TitleHandler from '../../generic/Title'
 function Home() {
-    console.log(CardData);
+    console.log(CardData[1].icon);
   const navigate = useNavigate()
   return (
     <Wrapper>
         <Wrapper.Container>
-           <Wrapper.Title>Sections:</Wrapper.Title>
-           {/* <Wrapper.Box>
-               <Wrapper.Card onClick={()=> navigate('/all-users')}>
-                    <Wrapper.CardTitle>
-                        All Users
-                    </Wrapper.CardTitle>
-                    <Wrapper.CardIcon src={allusers} />               
-                </Wrapper.Card>
-                <Wrapper.Card onClick={()=> navigate('/middle-users')}>
-                    <Wrapper.CardTitle>
-                        Half Time
-                    </Wrapper.CardTitle>
-                    <Wrapper.CardIcon src={halftime} />               
-                </Wrapper.Card>
+           <TitleHandler title={'Sections:'}  showBackIcon={false}/>
+           <Wrapper.Box>
+              <Card title={'All Users'}  url={allusers}  onClick={()=> navigate('/all-users')}/>
+              <Card title={'Half Time'} url={halftime}  onClick={()=> navigate('/middle-users')}/>
            </Wrapper.Box>
            <Wrapper.Box>
-               <Wrapper.Card onClick={()=> navigate('/end-users')}>
-                    <Wrapper.CardTitle>
-                        Time Up
-                    </Wrapper.CardTitle>
-                    <Wrapper.CardIcon src={timeup} />               
-                </Wrapper.Card>
-                <Wrapper.Card onClick={()=> navigate('/empty-places')}>
-                    <Wrapper.CardTitle>
-                        Empty Places
-                    </Wrapper.CardTitle>
-                    <Wrapper.CardIcon src={emptyplaces} />               
-                </Wrapper.Card>
-           </Wrapper.Box> */}
-           {/* {
-            CardData.map(({title,icon},index)=>{
-              return <Card onClick={()=> navigate()} key={index} title={title} icon={icon}/>
-            })
-           } */}
+              <Card title={'Time Up'}  url={timeup}  onClick={()=> navigate('/end-users')}/>
+              <Card title={'Empty Places'} url={emptyplaces}  onClick={()=> navigate('/empty-places')}/>
+           </Wrapper.Box>
            <Wrapper.Title>Reports:</Wrapper.Title>
-           <Wrapper.Card onClick={()=> navigate('/report')}>
-                <Wrapper.CardTitle>
-                    Reports
-                </Wrapper.CardTitle>
-                <Wrapper.CardIcon src={reports} />               
-            </Wrapper.Card>
+           <Card title={'Reports'} url={reports}  onClick={()=> navigate('/report')}/>
         </Wrapper.Container>
     </Wrapper>
   )

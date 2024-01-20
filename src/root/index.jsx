@@ -3,13 +3,10 @@ import { Route,Routes } from 'react-router-dom'
 import Login from '../components/Login'
 import Navbar from '../components/Navbar'
 import Home from '../components/Home'
-import AllUsers from '../components/AllUsers'
-import HalfTime from '../components/HalfTime'
-import Report from '../components/Report'
-import TimeUp from '../components/TimeUp'
-import EmptyPlaces from '../components/EmptyPlaces'
-
+import {path} from '../mock/path'
+import NotFound from '../components/NotFound'
 function Root() {
+  console.log(path[1].path);
   return (
     <Routes>
         <Route path='/' element={ 
@@ -17,13 +14,25 @@ function Root() {
         }      
         >
         <Route index element={<Home />} />
+        <Route path="*" element={<NotFound />} />
+
+        {
+          path.map(({id,path,element, hasChild=false ,children })=>{
+             return   !hasChild ? <Route key={id} path={path} element={element} />:
+             <Route key={id} path={path} element={element} >
+               {
+                children.map((childValue)=>{
+                  return  <Route key={childValue.id} path={childValue.path} element={childValue.element} />
+                })
+               }
+             </Route>
+
+          }
+          )
+        }
         </Route>
         <Route path='/login' element={<Login />}/>
-        <Route path='/all-users' element={<AllUsers />}/>
-        <Route path='/middle-users' element={<HalfTime />}/>
-        <Route path='/end-users' element={<TimeUp />}/>
-        <Route path='/report' element={<Report />}/>
-        <Route path='/empty-places' element={<EmptyPlaces />}/>
+        <Route path="*" element={<NotFound />} />
     </Routes>
   )
 } 
