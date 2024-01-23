@@ -10,9 +10,9 @@ const OrdinaryRooms = () => {
       !HasOutlet ?
        <>
             <Wrapper>
-              <Card title={'Building 2'}  url={building}  onClick={()=> navigate('/empty-places/ordinary-rooms')}/>
-              <Card title={'Building 4'}  url={building}  onClick={()=> navigate('/empty-places/luxury-rooms')}/>
-              <Card title={'Building 6'}  url={building}  onClick={()=> navigate('/empty-places/cottages')}/>
+              <Card title={'Building 2'}  url={building}  onClick={()=> navigate('/empty-places/ordinary-rooms/2')}/>
+              <Card title={'Building 4'}  url={building}  onClick={()=> navigate('/empty-places/luxury-rooms/4')}/>
+              <Card title={'Building 6'}  url={building}  onClick={()=> navigate('/empty-places/cottages/6')}/>
              </Wrapper>
        </>:  <Outlet />
   

@@ -18,13 +18,14 @@ import Card from '../../generic/Card'
 import { CardData } from '../../mock/carddata'
 import { useNavigate } from 'react-router-dom'
 import TitleHandler from '../../generic/Title'
+import { useTranslation } from 'react-i18next'
 function Home() {
-    console.log(CardData[1].icon);
+  const {t} = useTranslation()
   const navigate = useNavigate()
   return (
     <Wrapper>
         <Wrapper.Container>
-           <TitleHandler title={'Sections:'}  showBackIcon={false}/>
+           <TitleHandler title={t('home_title')}  showBackIcon={false}/>
            <Wrapper.Box>
               <Card title={'All Users'}  url={allusers}  onClick={()=> navigate('/all-users')}/>
               <Card title={'Half Time'} url={halftime}  onClick={()=> navigate('/middle-users')}/>

@@ -5,8 +5,21 @@ import Navbar from '../components/Navbar'
 import Home from '../components/Home'
 import {path} from '../mock/path'
 import NotFound from '../components/NotFound'
+import i18 from 'i18next'
+import { initReactI18next } from 'react-i18next'
+import { en } from '../utils/locale/en'
+import { ru } from '../utils/locale/ru'
+import { uz } from '../utils/locale/uz'
 function Root() {
-  console.log(path[1].path);
+  i18.use(initReactI18next).init({
+    resourse : {
+      en:{ translation: en},
+      ru:{ translation: ru},
+      uz: {translation: uz}
+    },
+    lang: 'en',
+    fallbackLng : 'en',
+  })
   return (
     <Routes>
         <Route path='/' element={ 
