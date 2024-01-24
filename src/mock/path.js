@@ -2,7 +2,7 @@ import AllUsers from "./../components/AllUsers";
 import HalfTime from "./../components/HalfTime";
 import Home from "./../components/Home";
 import TimeUp from "./../components/TimeUp";
-import EmptyPlaces from "./../components/EmptyPlaces";
+import EmptyPlaces from "./../components/BuildingTypes";
 import Report from "./../components/Report";
 import OrdinaryRooms from './../components/BuildingTypes/OrdinaryRooms';
 import LuxuryRooms from './../components/BuildingTypes/LuxuryRooms'
@@ -17,7 +17,7 @@ export const path = [
     {
         id:'1',
         path: '/all-users',
-        element: <AllUsers />,
+        element: <AllUsers />
     },
     {
         id:'2',

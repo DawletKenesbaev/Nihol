@@ -3,7 +3,8 @@ import { Modal,Segmented ,Avatar } from 'antd'
 import { UserOutlined } from '@ant-design/icons';
 import { useDispatch, useSelector } from 'react-redux'
 import { switchLocaleModal } from '../../../redux/modelSlice'
-
+import { changeLang } from '../../../redux/localeSlice';
+import i18 from 'i18next';
 
 
 
@@ -11,13 +12,17 @@ const LanguageModal = () => {
   const {localeModalVisibility } = useSelector((state)=> state.modal);
   const { lang } = useSelector((state)=> state.locale);
   const dispatch = useDispatch()
-  
+  const alterLanguage =()=>{
+      dispatch(switchLocaleModal());
+      i18.changeLanguage(lang)
+  }
   return (
     <Modal
        title='Change Language'       
        onCancel={()=>dispatch(switchLocaleModal())}
        open={localeModalVisibility}
        okText='Switch'
+       onOk={alterLanguage}
     >
         <Segmented
           defaultValue={lang}
@@ -29,7 +34,7 @@ const LanguageModal = () => {
                     <div>English</div>
                   </div>
                 ),
-                value: 'eng',
+                value: 'en',
               },
               {
                 label: (
@@ -38,7 +43,7 @@ const LanguageModal = () => {
                     <div>Russian</div>
                   </div>
                 ),
-                value: 'rus',
+                value: 'ru',
               },
               {
                 label: (
@@ -47,10 +52,10 @@ const LanguageModal = () => {
                     <div>Uzbek</div>
                   </div>
                 ),
-                value: 'uzb',
+                value: 'uz',
               },
             ]}
-         onChange={(e)=> console.log(e)}
+         onChange={(e) => dispatch(changeLang(e))}
         />
     </Modal>
   )

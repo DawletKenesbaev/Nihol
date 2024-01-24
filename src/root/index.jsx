@@ -10,20 +10,27 @@ import { initReactI18next } from 'react-i18next'
 import { en } from '../utils/locale/en'
 import { ru } from '../utils/locale/ru'
 import { uz } from '../utils/locale/uz'
+import { useSelector } from 'react-redux'
+import RequireAuth from '../tools/RequireAuth'
+
 function Root() {
+  const {lang} = useSelector((state)=> state.locale)
+
   i18.use(initReactI18next).init({
-    resourse : {
+    resources : {
       en:{ translation: en},
       ru:{ translation: ru},
       uz: {translation: uz}
     },
-    lang: 'en',
-    fallbackLng : 'en',
+    lang: lang,
+    fallbackLng : lang,
   })
   return (
     <Routes>
         <Route path='/' element={ 
-              <Navbar />
+          <RequireAuth>
+             <Navbar />
+          </RequireAuth>
         }      
         >
         <Route index element={<Home />} />

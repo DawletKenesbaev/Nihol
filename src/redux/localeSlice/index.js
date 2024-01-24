@@ -4,8 +4,9 @@ import { createSlice } from "@reduxjs/toolkit";
 const localeSlice = createSlice({
     name: 'localeSlice',
     initialState: {
-        lang:'eng'
-    },
+        lang:'en'
+    }, 
+
     reducers: {
        changeLang(state,{payload}){
           state.lang = payload
