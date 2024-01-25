@@ -69,7 +69,7 @@ function Login() {
             Wassup
            </Wrapper.Title>
            <Wrapper.Description>
-           Please contact me first on Telegram or Gmail to obtain the <strong>phone number</strong> and <strong>password</strong> for logging in. Afterward, you can access the actual website."
+           Please contact me first on Telegram or Gmail to obtain the <strong>phone number</strong> and <strong>password</strong> for logging in. Afterward, you can access the actual website.
               <br/>
               Tg: https://t.me/TheUbermensch1 <br />
               Gmail: devdawlet@gmail.com

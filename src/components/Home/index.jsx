@@ -28,15 +28,15 @@ function Home() {
         <Wrapper.Container>
            <TitleHandler title={t('home_title')}  showBackIcon={false}/>
            <Wrapper.Box>
-              <Card title={'All Users'}  url={allusers}  onClick={()=> navigate('/all-users')}/>
-              <Card title={'Half Time'} url={halftime}  onClick={()=> navigate('/middle-users')}/>
+              <Card title={t('all_users')}  url={allusers}  onClick={()=> navigate('/all-users')}/>
+              <Card title={t('half_time')} url={halftime}  onClick={()=> navigate('/middle-users')}/>
            </Wrapper.Box>
            <Wrapper.Box>
-              <Card title={'Time Up'}  url={timeup}  onClick={()=> navigate('/end-users')}/>
-              <Card title={'Empty Places'} url={emptyplaces}  onClick={()=> navigate('/empty-places')}/>
+              <Card title={t('time_up')}  url={timeup}  onClick={()=> navigate('/end-users')}/>
+              <Card title={t('empty_places')} url={emptyplaces}  onClick={()=> navigate('/empty-places')}/>
            </Wrapper.Box>
-           <Wrapper.Title>Reports:</Wrapper.Title>
-           <Card title={'Reports'} url={reports}  onClick={()=> navigate('/report')}/>
+           <Wrapper.Title>{t('reports')}</Wrapper.Title>
+           <Card title={t('report')} url={reports}  onClick={()=> navigate('/report')}/>
         </Wrapper.Container>
     </Wrapper>
   )
