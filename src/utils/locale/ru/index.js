@@ -14,5 +14,8 @@ export const ru = {
     change_lang:'Изменить язык',
     logout: 'Выйти',
     rooms:'Комната',
-    building: 'Здание'
+    building: 'Здание',
+    // all users
+    fullname : 'Полное имя'
+
 }

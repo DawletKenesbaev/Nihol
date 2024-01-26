@@ -14,5 +14,8 @@ export const uz = {
     change_lang:'Tilni ozgartirish',
     logout: 'Tark etish',
     rooms:'Xonalar',
-    building:'Bino'
+    building:'Bino',
+    // all users
+    fullname : 'Toliq ism'
+
 }

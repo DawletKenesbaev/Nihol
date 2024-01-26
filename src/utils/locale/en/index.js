@@ -14,5 +14,7 @@ export const en = {
     change_lang:'Change Language',
     logout: 'Log Out',
     rooms:'Rooms',
-    building:'Building'
+    building:'Building',
+    //all users 
+    fullname : 'Full Name'
 }
