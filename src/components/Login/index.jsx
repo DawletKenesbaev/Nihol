@@ -10,6 +10,7 @@ import { LoadingOutlined } from '@ant-design/icons'
 import useNotificationAPI from '../../generic/NotificationAPI';
 import useAxios from '../../hooks/useAxios';
 import UseInput from '../../generic/UseInput';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -20,6 +21,7 @@ function Login() {
   
   const Notifier = useNotificationAPI()
   const axios = useAxios()
+  const navigate = useNavigate()
   
   const { phoneFormatter} = UseInput()
 
@@ -51,9 +53,9 @@ function Login() {
         }
        })=>{
         localStorage.setItem('token',token)
-        console.log(user);
         SetLoading(false)
-        return notification.success({message : 'Successfully Logged In '})
+        notification.success({message : 'Successfully Logged In '})
+        navigate('/')
        }
       ).catch((error)=>{
         console.error("AxiosError:", error);

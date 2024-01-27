@@ -7,6 +7,7 @@ import Report from "./../components/Report";
 import OrdinaryRooms from './../components/BuildingTypes/OrdinaryRooms';
 import LuxuryRooms from './../components/BuildingTypes/LuxuryRooms'
 import Cottages from './../components/BuildingTypes/Cottages'
+import SecondBuilding from "../components/Buildings/SecondBuilding";
 
 export const path = [
     {
@@ -38,7 +39,16 @@ export const path = [
             {
                 id:'4-1',
                 path: 'ordinary-rooms',
-                element: <OrdinaryRooms />
+                element: <OrdinaryRooms />,
+                hasChild:true ,
+                children: [
+                    {
+                        id:'4-1-1',
+                        path: '2',
+                        element: <SecondBuilding />
+
+                    }
+                ]
             },
             {
                 id:'4-2',

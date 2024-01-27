@@ -22,6 +22,11 @@ function Navbar() {
   const settingClickHandler = () =>{dispatch(switchProfileModal())}
   const localeClickHandler = () =>{dispatch(switchLocaleModal())}
   const navigate = useNavigate()
+  const LogOut = () => {
+    localStorage.removeItem('token')
+    console.log('Log out');
+    navigate('/login')
+  }
   return (
     <>
          <SettingModal />
@@ -33,7 +38,7 @@ function Navbar() {
           
             <Dropdown
               menu={{
-                items:  navbarDropDownItems({settingClickHandler,localeClickHandler }),
+                items:  navbarDropDownItems({settingClickHandler,localeClickHandler,LogOut}),
               }}
               trigger={['click']}
              >
