@@ -14,8 +14,16 @@ export const Wrapper = styled.div`
 Wrapper.Container = styled.div`
   display:flex;
   flex-direction:column;
+  justify-content: center;
   align-items:center;
   width:fit-content;
+  padding: 0px 20%;
+  @media (max-width: 900px) {
+    padding: 0px 10%;
+}
+  @media (max-width: 700px) {
+    padding: 0px;
+}
 
 `
 Wrapper.Title = styled.div`
@@ -28,7 +36,6 @@ Wrapper.Description = styled.div`
     color: rgb(178, 176, 184);
     text-align: center;
     width: 80%;
-}
 `
 Wrapper.Input = styled(Input)`
     display: flex;
@@ -46,7 +53,6 @@ Wrapper.Input = styled(Input)`
     .ant-input , .ant-input-group-addon {
         border:none;
     }
-}
 
 `
 Wrapper.InputPassword = styled(Input.Password)`
@@ -62,8 +68,6 @@ Wrapper.InputPassword = styled(Input.Password)`
     border-radius: 12px;
     padding-left: 15px;
     color: rgb(89, 90, 98);
-}
-
 `
 Wrapper.Button = styled.div`
 margin-top: 50px;
@@ -80,6 +84,5 @@ cursor: pointer;
 font-size: 16px;
 color: rgb(255, 255, 255);
 background: rgb(48, 104, 204);
-}
 
 `

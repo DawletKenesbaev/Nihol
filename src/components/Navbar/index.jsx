@@ -9,7 +9,8 @@ import {useDropDownAPI} from '../../generic/DropDown';
 import SettingModal from './SettingModal';
 import LanguageModal from './LanguageModal';
 import { useDispatch } from 'react-redux';
-import { switchLocaleModal, switchProfileModal } from '../../redux/modelSlice';
+import { switchLocaleModal, switchLogOutVisibility, switchProfileModal } from '../../redux/modelSlice';
+import LogOutModal from './Logout';
 
 
 const items = [
@@ -21,6 +22,7 @@ function Navbar() {
   const dispatch = useDispatch()
   const settingClickHandler = () =>{dispatch(switchProfileModal())}
   const localeClickHandler = () =>{dispatch(switchLocaleModal())}
+  const logoutClickHandler = () =>{dispatch(switchLogOutVisibility())}
   const navigate = useNavigate()
   const LogOut = () => {
     localStorage.removeItem('token')
@@ -31,6 +33,7 @@ function Navbar() {
     <>
          <SettingModal />
          <LanguageModal />
+         <LogOutModal />
          <Wrapper>
             <Wrapper.Title onClick={()=> navigate('/') } style={{cursor: 'pointer'}}>
               Nihol
@@ -38,7 +41,7 @@ function Navbar() {
           
             <Dropdown
               menu={{
-                items:  navbarDropDownItems({settingClickHandler,localeClickHandler,LogOut}),
+                items:  navbarDropDownItems({settingClickHandler,localeClickHandler,logoutClickHandler}),
               }}
               trigger={['click']}
              >

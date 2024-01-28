@@ -9,7 +9,7 @@ export const useDropDownAPI = () => {
   const dispatch = useDispatch()
   return (
     {
-      navbarDropDownItems:({settingClickHandler,localeClickHandler })=>{
+      navbarDropDownItems:({settingClickHandler,localeClickHandler,logoutClickHandler })=>{
         return [
           {
             label: <DropdownItem onClick={settingClickHandler}><SettingOutlined />{t('settings')}</DropdownItem>,
@@ -23,7 +23,7 @@ export const useDropDownAPI = () => {
             type: 'divider',
           },
           {
-            label: <DropdownItem
+            label: <DropdownItem onClick={logoutClickHandler}
              style={{color:'red'}} 
              ><LogoutOutlined />{t('logout')}</DropdownItem>,
             key: '3',

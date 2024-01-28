@@ -6,6 +6,7 @@ export let modalSlice = createSlice({
    initialState: {
       profilModalVisibility:false,
       localeModalVisibility:false,
+      logOutVisibility:false,
 
    },
    reducers: {
@@ -14,11 +15,14 @@ export let modalSlice = createSlice({
       },
       switchLocaleModal(state){
         state.localeModalVisibility = !state.localeModalVisibility
-    }
+      },
+      switchLogOutVisibility(state){
+         state.logOutVisibility = !state.logOutVisibility
+      }
    }
 
 
 
 });
 export default modalSlice.reducer
-export const {switchProfileModal,switchLocaleModal} = modalSlice.actions
+export const {switchProfileModal,switchLocaleModal,switchLogOutVisibility} = modalSlice.actions
