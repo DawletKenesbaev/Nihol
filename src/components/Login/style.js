@@ -17,12 +17,9 @@ Wrapper.Container = styled.div`
   justify-content: center;
   align-items:center;
   width:fit-content;
-  padding: 0px 20%;
-  @media (max-width: 900px) {
-    padding: 0px 10%;
-}
-  @media (max-width: 700px) {
-    padding: 0px;
+  width: 480px;
+  @media (max-width: 600px) {
+    width: 370px;
 }
 
 `
