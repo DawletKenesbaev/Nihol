@@ -16,6 +16,6 @@ export const uz = {
     rooms:'Xonalar',
     building:'Bino',
     // all users
-    fullname : 'Toliq ism'
-
+    fullname : 'Toliq ism',
+    name:'Ismi'
 }

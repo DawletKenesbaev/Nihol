@@ -11,6 +11,7 @@ export const Wrapper = styled.div`
   justify-content:center;
   align-items:center;
 `
+
 Wrapper.Container = styled.div`
   display:flex;
   flex-direction:column;
