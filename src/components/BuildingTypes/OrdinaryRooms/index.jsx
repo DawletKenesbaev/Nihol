@@ -17,7 +17,6 @@ const OrdinaryRooms = () => {
               <Card title={`${t('building')} 6`}  url={building}  onClick={()=> navigate('/empty-places/cottages/6')}/>
              </Wrapper>
        </>:  <Outlet />
-  
     ) 
 }
 const Wrapper = styled.div`
