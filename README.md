@@ -7,11 +7,10 @@
   Customer Management: Easily manage customer information including personal details, stay durations, and payment status.
   Payment Tracking: Keep track of customer payments and stay durations to ensure accurate billing and administration.
   User-Friendly Interface: Intuitive interface designed for ease of use, allowing administrators to navigate and manage data efficiently.
-  Security: Secure user authentication and authorization mechanisms to protect sensitive customer data.
-  Multilanguage Uzb-Rus_Eng
+  Security: Secure user authentication and authorization mechanisms to protect sensitive customer data. <br/>
+  Multilanguage Uzb-Rus-Eng 
 </p>
-<h3>Live Demo</h3>
-<a href='https://nihol-bice.vercel.app/' target='_blank'>Link</a>
+<h3><a href='https://nihol-bice.vercel.app/' target='_blank'>Live Demo</a></h3>
 Technologies Used
 <ul>
   <li>ReactJs</li>
